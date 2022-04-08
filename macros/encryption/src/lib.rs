@@ -1,9 +1,7 @@
-#![feature(extend_one)]
 use proc_macro::{
     TokenStream,
     TokenTree,
-    Group,
-    Literal
+    Group
 };
 use litrs::StringLit;
 use encryption_macros_utils::xor;
@@ -52,20 +50,31 @@ pub fn encrypt_strings(token_stream: TokenStream) -> TokenStream {
     for tokentree in token_stream {
         match tokentree {
             TokenTree::Group(group) => {
-                new_stream.extend_one(
-                    TokenTree::from(
-                        Group::new(
-                            group.delimiter(), 
-                            encrypt_strings(group.stream())
+                new_stream.extend(
+                    [
+                        TokenTree::from(
+                            Group::new(
+                                group.delimiter(), 
+                                encrypt_strings(group.stream())
+                            )
                         )
-                    )
+                    ]
                 );
             },
             TokenTree::Literal(literal) => {
-                new_stream.extend(parse_literal(literal));
+                match StringLit::try_from(&literal) {
+                    Ok(literal) => {
+                        new_stream.extend(parse_literal(literal.value()));
+                    },
+                    Err(_) => {
+                        new_stream.extend(
+                            [TokenTree::Literal(literal)]
+                        )
+                    },
+                }
             },
             t => {
-                new_stream.extend_one(t);
+                new_stream.extend([t]);
             }
         }
     }
@@ -89,21 +98,19 @@ pub fn encrypt_all_strings(_metadata: TokenStream, token_stream : TokenStream) -
     encrypt_strings(token_stream)
 }
 
-fn parse_literal(literal : Literal) -> TokenStream {
-    let string_lit = StringLit::try_from(literal).expect("could not parse literal to string literal");
-    let lit = string_lit.value();
+fn parse_literal(literal : &str) -> TokenStream {
 
-    if lit.len() > 0 {
+    if literal.len() > 0 {
         let mut start = 0;
         let mut format_args = String::new();
         let mut string_literals = Vec::new();
         loop {
-            if let Some(new_start) = lit[start..].find('{') {
-                if let Some(end) = lit[start + new_start..].find('}') {
+            if let Some(new_start) = literal[start..].find('{') {
+                if let Some(end) = literal[start + new_start..].find('}') {
                     let real_start = start + new_start;
-                    string_literals.push(encoded_literal(&lit[..real_start]));
+                    string_literals.push(encoded_literal(&literal[..real_start]));
                     format_args.push_str("{}");
-                    format_args.push_str(&lit[real_start..real_start + end + 1]);
+                    format_args.push_str(&literal[real_start..real_start + end + 1]);
                     start += new_start + end + 1;
                 } else {break}
             } else {break}
@@ -118,7 +125,7 @@ fn parse_literal(literal : Literal) -> TokenStream {
                 }),*
             }.into()
         } else {
-            generate_decode_scope(encoded_literal(lit))
+            generate_decode_scope(encoded_literal(literal))
         }
     } else {
         quote!{""}.into()
