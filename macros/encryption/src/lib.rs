@@ -6,7 +6,7 @@ use proc_macro::{
     Literal
 };
 use litrs::StringLit;
-use utils::xor;
+use encryption_macros_utils::xor;
 use quote::quote;
 
 /// xor a single string literal declaratively

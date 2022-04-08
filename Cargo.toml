@@ -13,6 +13,6 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 hex = "0.4.3"
-encryption = { path = "./macros/encryption" }
-key-generation = { path = "./macros/key-generation" }
-utils = { path = "./utils" }
+encryption-macros-encryption = { path = "./macros/encryption", version="*" }
+encryption-macros-key-generation = { path = "./macros/key-generation", version="*" }
+encryption-macros-utils = { path = "./utils", version="*" }

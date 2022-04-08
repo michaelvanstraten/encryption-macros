@@ -1,4 +1,4 @@
-use key_generation::generate_key;
+use encryption_macros_key_generation::generate_key;
 use hex::decode;
 
 pub static ENCRYPTION_KEY_BUFFER : &'static str = generate_key!();

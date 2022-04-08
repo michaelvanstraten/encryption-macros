@@ -1,14 +1,18 @@
 [package]
-name = "encryption"
+name = "encryption-macros-encryption"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Michael van Straten"]
+repository = "https://github.com/michaelvanstraten/encryption-macros"
+documentation = "https://docs.rs/encryption-macros/"
+categories = ["proc-macro"]
+description = "This crate belongs to the encryption-macros crate"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 quote = "1.0.10"
 litrs = "0.2.3"
-utils = { path = "../../utils" }
+encryption-macros-utils = { path = "../../utils", version="*" }
 hex = "0.4.3"
 
 [lib]

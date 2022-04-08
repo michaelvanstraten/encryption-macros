@@ -23,8 +23,8 @@
 //! So something like this: ```println!("{variable_a}")``` sadly doesn't work when inside an encrypted scope.
 
 
-pub use encryption::*;
-pub use utils::xor;
+pub use encryption_macros_encryption::*;
+pub use encryption_macros_utils::xor;
 
 /// # Re-export of [`hex::decode`] from [hex](https://github.com/KokaKiwi/rust-hex)
 pub use hex::decode;

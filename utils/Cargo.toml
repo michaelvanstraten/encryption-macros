@@ -1,8 +1,16 @@
 [package]
-name = "utils"
+name = "encryption-macros-utils"
 version = "0.1.0"
 edition = "2021"
+authors = ["Michael van Straten"]
+repository = "https://github.com/michaelvanstraten/encryption-macros"
+documentation = "https://docs.rs/encryption-macros/"
+keywords = ["xor"]
+categories = ["encoding"]
+description = "This crate belongs to the encryption-macros crate"
+license = "MIT OR Apache-2.0"
+
 
 [dependencies]
-key-generation = { path = "../macros/key-generation" }
+encryption-macros-key-generation = { path = "../macros/key-generation", version="*" }
 hex = "0.4.3"
