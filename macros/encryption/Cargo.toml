@@ -1,0 +1,15 @@
+[package]
+name = "encryption"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+quote = "1.0.10"
+litrs = "0.2.3"
+utils = { path = "../../utils" }
+hex = "0.4.3"
+
+[lib]
+proc-macro = true
