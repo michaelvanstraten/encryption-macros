@@ -5,14 +5,14 @@ edition = "2021"
 authors = ["Michael van Straten"]
 repository = "https://github.com/michaelvanstraten/encryption-macros"
 documentation = "https://docs.rs/encryption-macros/"
-keywords = ["redis", "serde", "serialization"]
-categories = ["encoding"]
+keywords = ["string", "macros", "obfuscation"]
+categories = ["cryptography"]
 readme = "readme.md"
 description = "This crate provides macros to xor strings decaritive or automaticly at compiletime and atomaticly decode the at run time."
 license = "MIT OR Apache-2.0"
 
 [dependencies]
 hex = "0.4.3"
-encryption-macros-encryption = { path = "./macros/encryption", version="*" }
-encryption-macros-key-generation = { path = "./macros/key-generation", version="*" }
-encryption-macros-utils = { path = "./utils", version="*" }
+encryption-macros-encryption = { path = "./macros/encryption", version="^0.1" }
+encryption-macros-key-generation = { path = "./macros/key-generation", version="^0.1" }
+encryption-macros-utils = { path = "./utils", version="^0.1" }

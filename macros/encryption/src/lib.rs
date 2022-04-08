@@ -72,7 +72,7 @@ pub fn encrypt_strings(token_stream: TokenStream) -> TokenStream {
     new_stream
 }
 
-/// xor all strings in a decoreded function
+/// xor all strings in a decorated function
 /// 
 /// ## Example 
 /// ```

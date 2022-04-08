@@ -12,7 +12,7 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 quote = "1.0.10"
 litrs = "0.2.3"
-encryption-macros-utils = { path = "../../utils", version="*" }
+encryption-macros-utils = { path = "../../utils", version="^0.1" }
 hex = "0.4.3"
 
 [lib]

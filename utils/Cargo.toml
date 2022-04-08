@@ -12,5 +12,5 @@ license = "MIT OR Apache-2.0"
 
 
 [dependencies]
-encryption-macros-key-generation = { path = "../macros/key-generation", version="*" }
+encryption-macros-key-generation = { path = "../macros/key-generation", version="^0.1" }
 hex = "0.4.3"
