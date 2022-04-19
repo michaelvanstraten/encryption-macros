@@ -1,6 +1,6 @@
 [package]
 name = "encryption-macros"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Michael van Straten"]
 repository = "https://github.com/michaelvanstraten/encryption-macros"
@@ -13,6 +13,6 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 hex = "0.4.3"
-encryption-macros-encryption = { path = "./macros/encryption", version="^0.1" }
+encryption-macros-encryption = { path = "./macros/encryption", version="0.1.1" }
 encryption-macros-key-generation = { path = "./macros/key-generation", version="^0.1" }
 encryption-macros-utils = { path = "./utils", version="^0.1" }
