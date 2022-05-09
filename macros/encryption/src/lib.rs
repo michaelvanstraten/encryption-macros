@@ -117,7 +117,7 @@ fn parse_format_args_literal(literal: &str) -> TokenStream {
     let mut start = 0;
     let mut format_args = String::new();
     let mut string_literals = Vec::new();
-    
+
     loop {
         if let Some(new_start) = literal[start..].find('{') {
             if let Some(end) = literal[start + new_start..].find('}') {
@@ -141,7 +141,7 @@ fn parse_format_args_literal(literal: &str) -> TokenStream {
 
     let decryption_scopes = string_literals
         .iter()
-        .map(|string_literal| generate_decode_scope(string_literal.to_string()));
+        .map(|string_literal| generate_decode_scope(string_literal.into()));
 
     quote! {
         #format_args,
